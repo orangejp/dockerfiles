@@ -15,8 +15,10 @@ COPY remi.repo /etc/yum.repos.d/
 
 # install php56
 RUN yum -y install --enablerepo=remi --enablerepo=remi-php56 php php-devel php-common php-cli php-mbstring php-fpm php-pecl-apcu \
-php-pear php-pdo php-opcache php-mcrypt php-pecl-xhprof php-xml php-pecl-memcached php-pecl-imagick php-pecl-mailparse php-mysqlnd
+php-pear php-pdo php-opcache php-mcrypt php-pecl-xhprof php-xml php-pecl-memcached php-pecl-imagick php-pecl-mailparse \
+php-mysqlnd php-xdebug
 
 RUN yum clean all
 
 COPY vhost.conf /etc/httpd/conf.d/vhost.conf
+COPY 15-xdebug.ini /etc/php.d/15-xdebug.ini
